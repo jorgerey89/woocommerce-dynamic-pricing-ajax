@@ -38,7 +38,7 @@ Un plugin moderno para WooCommerce que muestra dinámicamente los precios con de
 
 ```bash
 cd wp-content/plugins/
-git clone https://github.com/tuusuario/woocommerce-dynamic-pricing-ajax.git
+git clone https://github.com/jorgerey89/woocommerce-dynamic-pricing-ajax.git
 ```
 
 ## 🎯 Uso
@@ -244,8 +244,8 @@ Este plugin está licenciado bajo GPL v2 o posterior.
 
 ## 🙋‍♂️ Soporte
 
-- **Issues**: [GitHub Issues](https://github.com/tuusuario/woocommerce-dynamic-pricing-ajax/issues)
-- **Documentación**: [Wiki del proyecto](https://github.com/tuusuario/woocommerce-dynamic-pricing-ajax/wiki)
+- **Issues**: [GitHub Issues](https://github.com/jorgerey89/woocommerce-dynamic-pricing-ajax/issues)
+- **Documentación**: [Wiki del proyecto](https://github.com/jorgerey89/woocommerce-dynamic-pricing-ajax/wiki)
 - **Contacto**: [tu-email@ejemplo.com](mailto:tu-email@ejemplo.com)
 
 ## 🌟 ¿Te gusta el plugin?
