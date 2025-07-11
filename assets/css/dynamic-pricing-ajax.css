@@ -1,0 +1,824 @@
+/* WooCommerce Dynamic Pricing AJAX Styles - Modernized Design */
+/* Compatible with Impreza theme - Visual improvements applied */
+
+/* Eliminar precio de orginal de WooCommerce*/
+.woocommerce .product .summary .price {
+	display: none;
+}
+/* DISEÑO MODERNIZADO: Tablet responsive */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .wc-dynamic-pricing-content {
+        padding: 22px;
+    }
+    
+    .wc-dynamic-pricing-prices-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .wc-dynamic-pricing-label {
+        font-size: 1.15em;
+    }
+}
+
+/* DISEÑO MODERNIZADO: Animación de entrada mejorada */
+.wc-dynamic-pricing-container {
+    animation: modernSlideIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes modernSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95) translateZ(0);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) translateZ(0);
+    }
+}
+
+/* DISEÑO MODERNIZADO: Temas específicos */
+.impreza .wc-dynamic-pricing-container {
+    font-family: var(--wc-dp-font-family);
+}
+
+.impreza .wc-dynamic-pricing-content {
+    background: var(--wc-dp-background);
+    backdrop-filter: blur(15px);
+}
+
+/* DISEÑO MODERNIZADO: RTL support */
+[dir="rtl"] .wc-dynamic-pricing-header {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .wc-dynamic-pricing-title-section {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .wc-dynamic-pricing-savings-highlight {
+    flex-direction: row-reverse;
+}
+
+/* DISEÑO MODERNIZADO: Print styles */
+@media print {
+    .wc-dynamic-pricing-container {
+        background: white !important;
+        border: 2px solid #ccc !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+    
+    .wc-dynamic-pricing-content::before {
+        display: none;
+    }
+    
+    .wc-dynamic-pricing-spinner-overlay {
+        display: none !important;
+    }
+    
+    .wc-dynamic-pricing-progress-section {
+        display: none !important;
+    }
+}
+
+/* DISEÑO MODERNIZADO: Accesibilidad mejorada */
+.wc-dynamic-pricing-content:focus-within {
+    outline: 3px solid var(--wc-dp-primary-color);
+    outline-offset: 3px;
+}
+
+.wc-dynamic-pricing-quantity-badge:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+/* DISEÑO MODERNIZADO: High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --wc-dp-primary-color: #000;
+        --wc-dp-secondary-color: #000;
+        --wc-dp-accent-color: #435c35;
+        --wc-dp-background: #fff;
+        --wc-dp-surface: #fff;
+        --wc-dp-text-primary: #000;
+        --wc-dp-text-secondary: #000;
+    }
+    
+    .wc-dynamic-pricing-content {
+        border: 3px solid #000;
+    }
+    
+    .wc-dynamic-pricing-price-item {
+        border: 2px solid #000;
+    }
+    
+    .wc-dynamic-pricing-spinner-overlay {
+        background: rgba(255, 255, 255, 0.98);
+        border: 3px solid #000;
+    }
+}
+
+/* DISEÑO MODERNIZADO: Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .wc-dynamic-pricing-container,
+    .wc-dynamic-pricing-content,
+    .wc-dynamic-pricing-price-item,
+    .wc-dynamic-pricing-savings-highlight,
+    .wc-dynamic-pricing-progress-section,
+    .wc-dynamic-pricing-spinner-overlay,
+    .progress-fill {
+        transition: none;
+        animation: none;
+    }
+    
+    
+    .wc-dynamic-pricing-content::before {
+        animation: none;
+    }
+    
+    .spinner-ring {
+        animation: none;
+        opacity: 0.7;
+    }
+    
+    .progress-fill.progress-animate,
+    .progress-indicator {
+        animation: none;
+    }
+    
+    .wc-dynamic-pricing-price-item.animate-in,
+    .wc-dynamic-pricing-savings-highlight.animate-in,
+    .wc-dynamic-pricing-progress-section.animate-in {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+/* DISEÑO MODERNIZADO: Scrollbar personalizado */
+.wc-dynamic-pricing-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.wc-dynamic-pricing-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.wc-dynamic-pricing-container::-webkit-scrollbar-thumb {
+    background: var(--wc-dp-primary-color);
+    border-radius: 3px;
+    transition: background 0.3s ease;
+}
+
+.wc-dynamic-pricing-container::-webkit-scrollbar-thumb:hover {
+    background: var(--wc-dp-secondary-color);
+}
+
+/* DISEÑO MODERNIZADO: Efectos visuales adicionales */
+.wc-dynamic-pricing-price-item .price-value {
+    position: relative;
+    overflow: hidden;
+}
+
+.wc-dynamic-pricing-price-item .price-value::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+    pointer-events: none;
+}
+
+.wc-dynamic-pricing-price-item.animate-in .price-value::before {
+    left: 100%;
+}
+
+/* DISEÑO MODERNIZADO: Loading state */
+.wc-dynamic-pricing-container.loading,
+.wc-dynamic-pricing-container.wc-dp-loading {
+    opacity: 1;
+    pointer-events: none;
+}
+
+.wc-dynamic-pricing-container.loading .wc-dynamic-pricing-content,
+.wc-dynamic-pricing-container.wc-dp-loading .wc-dynamic-pricing-content {
+    position: relative;
+}
+
+/* NUEVO: Estado de loading inicial */
+.wc-dynamic-pricing-container.wc-dp-loading .wc-dynamic-pricing-savings-highlight {
+    opacity: 0.7;
+}
+
+.wc-dynamic-pricing-container.wc-dp-loading .wc-dynamic-pricing-progress-section {
+    opacity: 0.7;
+}
+
+.wc-dynamic-pricing-container.wc-dp-loading .price-value {
+    color: var(--wc-dp-text-secondary);
+    font-style: italic;
+}
+
+/* DISEÑO MODERNIZADO: Containment para performance */
+.wc-dynamic-pricing-container {
+    contain: layout style paint;
+	margin: 25px 0!important;
+}
+
+.wc-dynamic-pricing-spinner-overlay {
+    contain: layout paint;
+}
+
+.wc-dynamic-pricing-progress-bar {
+    contain: layout paint;
+}
+
+/* DISEÑO MODERNIZADO: Micro-animaciones adicionales */
+.wc-dynamic-pricing-icon {
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+}
+
+.wc-dynamic-pricing-quantity-badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.wc-dynamic-pricing-quantity-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.wc-dynamic-pricing-quantity-badge.quantity-update::before {
+    left: 100%;
+}
+
+/* DISEÑO MODERNIZADO: Estados de interacción mejorados */
+.wc-dynamic-pricing-savings-highlight:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--wc-dp-shadow);
+}
+
+.wc-dynamic-pricing-progress-section:hover .progress-fill {
+    animation: progress-pulse 1s ease-in-out;
+}
+
+@keyframes progress-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* DISEÑO MODERNIZADO: Gamificación visual */
+.wc-dynamic-pricing-progress-section.milestone-reached {
+    animation: milestoneReached 0.8s ease-out;
+}
+
+@keyframes milestoneReached {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.progress-fill.milestone-animation {
+    animation: progressSuccess 1.5s ease-out;
+}
+
+@keyframes progressSuccess {
+    0% { box-shadow: 0 0 5px rgba(106, 172, 70, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(106, 172, 70, 1), 0 0 35px rgba(106, 172, 70, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(106, 172, 70, 0.5); }
+}
+
+/* DISEÑO MODERNIZADO: Efectos de brillo y gradientes */
+.wc-dynamic-pricing-savings-highlight {
+    position: relative;
+    overflow: hidden;
+}
+
+.wc-dynamic-pricing-savings-highlight::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: savingsShine 3s infinite;
+}
+
+@keyframes savingsShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* ÑO MODERNIZADO: Variables CSS mejoradas */
+:root {
+    --wc-dp-primary-color: var(--color-content-primary);
+    --wc-dp-secondary-color: var(--color-content-secondary);
+    --wc-dp-accent-color: var(--color-content-secondary);
+    --wc-dp-background: var(--color-content-primary-faded);
+    --wc-dp-surface: rgba(255, 255, 255, 0.9);
+    --wc-dp-border-radius: 0.3rem;
+    --wc-dp-small-radius: 0.3rem;
+    --wc-dp-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --wc-dp-shadow: 0 8px 32px rgba(106, 172, 70, 0.15);
+    --wc-dp-shadow-hover: 0 12px 40px rgba(106, 172, 70, 0.25);
+    --wc-dp-font-family: var(--h1-font-family,inherit);
+    --wc-dp-text-primary:var(--color-content-text);
+    --wc-dp-text-secondary: #666;
+    --wc-dp-text-muted: #999;
+}
+}
+
+/* DISEÑO MODERNIZADO: Contenedor principal */
+.wc-dynamic-pricing-container {
+    margin: 25px 0!important;
+    padding: 0;
+    font-family: var(--wc-dp-font-family);
+    transition: var(--wc-dp-transition);
+    will-change: transform, opacity;
+}
+
+/* DISEÑO MODERNIZADO: Contenido principal con gradiente y sombras */
+.wc-dynamic-pricing-content {
+    background: var(--wc-dp-background);
+    border: none;
+    border-radius: var(--wc-dp-border-radius);
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--wc-dp-shadow);
+    transform: translateZ(0);
+    backdrop-filter: blur(10px);
+}
+
+.wc-dynamic-pricing-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--wc-dp-primary-color), var(--wc-dp-secondary-color), var(--wc-dp-primary-color));
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+    border-radius: var(--wc-dp-border-radius) var(--wc-dp-border-radius) 0 0;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* DISEÑO MODERNIZADO: Header con nuevo layout */
+.wc-dynamic-pricing-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.wc-dynamic-pricing-title-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+.wc-dynamic-pricing-icon {
+    font-size: 2em;
+    filter: drop-shadow(0 2px 4px rgba(106, 172, 70, 0.3));
+}
+
+.wc-dynamic-pricing-title-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.wc-dynamic-pricing-label {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--wc-dp-text-primary);
+    margin: 0;
+}
+
+.wc-dynamic-pricing-subtitle {
+    font-size: 0.85em;
+    color: var(--wc-dp-text-secondary);
+    font-weight: 500;
+}
+
+/* DISEÑO MODERNIZADO: Badge de cantidad rediseñado */
+.wc-dynamic-pricing-quantity-badge {
+    background: var(--wc-dp-primary-color);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95em;
+    box-shadow: 0 4px 12px rgba(106, 172, 70, 0.3);
+    transition: var(--wc-dp-transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wc-dynamic-pricing-quantity-badge.quantity-update {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(106, 172, 70, 0.4);
+}
+
+.wc-dynamic-pricing-quantity-badge .quantity-number {
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* DISEÑO MODERNIZADO: Grid de precios - 3 columnas */
+.wc-dynamic-pricing-prices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+    transition: var(--wc-dp-transition);
+}
+
+/* NUEVO: Estilo para precio unitario sin descuento (sin tachado) */
+.wc-dynamic-pricing-price-item.unit-price .price-value {
+    color: var(--wc-dp-primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    position: relative;
+}
+
+.wc-dynamic-pricing-price-item {
+    background: var(--wc-dp-surface);
+    padding: 15px;
+    border-radius: var(--wc-dp-small-radius);
+    text-align: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: var(--wc-dp-transition);
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.wc-dynamic-pricing-price-item.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.wc-dynamic-pricing-price-item.original .price-value {
+    color: var(--wc-dp-text-muted);
+    text-decoration: line-through;
+    position: relative;
+}
+
+.wc-dynamic-pricing-price-item.discounted .price-value {
+    color: var(--wc-dp-primary-color);
+    font-weight: 700;
+}
+
+.wc-dynamic-pricing-price-item.total {
+    background: linear-gradient(135deg, var(--wc-dp-primary-color), var(--wc-dp-secondary-color));
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(106, 172, 70, 0.3);
+    transform: scale(1.02);
+}
+
+.wc-dynamic-pricing-price-item.total .price-label {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 700;
+    font-size: 0.85em;
+}
+
+.wc-dynamic-pricing-price-item.total .price-value {
+    color: white;
+    font-weight: 700;
+    font-size: 1.5em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.wc-dynamic-pricing-price-item .price-label {
+    font-size: 0.75em;
+    color: var(--wc-dp-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.wc-dynamic-pricing-price-item .price-value {
+    font-size: 1.3em;
+    font-weight: 600;
+    transition: var(--wc-dp-transition);
+}
+
+/* DISEÑO MODERNIZADO: Highlight de ahorros */
+.wc-dynamic-pricing-savings-highlight {
+    background: var(--wc-dp-accent-color);
+    color: white;
+    padding: 15px 20px;
+    border-radius: var(--wc-dp-small-radius);
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--wc-dp-shadow);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: var(--wc-dp-transition);
+}
+
+/* NUEVO: Estilo para cuando no hay descuento */
+.wc-dynamic-pricing-savings-highlight.no-discount {
+    background: var(--wc-dp-accent-color);
+    box-shadow: var(--wc-dp-shadow);
+}
+
+.wc-dynamic-pricing-savings-highlight.no-discount .savings-icon {
+    font-size: 1.3em;
+}
+
+/* Estilos específicos para la barra de progreso sin descuento */
+.wc-dynamic-pricing-progress-section .progress-label {
+    transition: var(--wc-dp-transition);
+}
+
+.wc-dynamic-pricing-savings-highlight.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.wc-dynamic-pricing-savings-highlight .savings-icon {
+    font-size: 1.5em;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.wc-dynamic-pricing-savings-highlight .savings-text {
+    flex: 1;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.wc-dynamic-pricing-savings-highlight .quantity-info {
+    opacity: 0.9;
+    font-size: 0.9em;
+    font-weight: 500;
+    display: block;
+    margin-top: 5px;
+}
+
+/* DISEÑO MODERNIZADO: Sistema de progreso */
+.wc-dynamic-pricing-progress-section {
+    margin-top: 20px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: var(--wc-dp-transition);
+}
+
+.wc-dynamic-pricing-progress-section.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.progress-label {
+    font-size: 0.85em;
+    color: var(--wc-dp-text-secondary);
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wc-dynamic-pricing-progress-bar {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    height: 8px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, var(--wc-dp-primary-color), var(--wc-dp-secondary-color));
+    height: 100%;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+}
+
+.progress-fill.progress-animate {
+    animation: progress-glow 2s infinite alternate;
+}
+
+@keyframes progress-glow {
+    0% { box-shadow: 0 0 5px rgba(106, 172, 70, 0.5); }
+    100% { box-shadow: 0 0 15px rgba(106, 172, 70, 0.8); }
+}
+
+.progress-indicator {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 16px;
+    height: 16px;
+    background: var(--wc-dp-primary-color);
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(106, 172, 70, 0.4);
+    animation: pulse-indicator 2s infinite;
+}
+
+@keyframes pulse-indicator {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.progress-text {
+    font-size: 0.8em;
+    color: var(--wc-dp-text-secondary);
+    margin-top: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* DISEÑO MODERNIZADO: Spinner moderno */
+.wc-dynamic-pricing-spinner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: var(--wc-dp-border-radius);
+    transform: translateZ(0);
+}
+
+.wc-dynamic-pricing-spinner-overlay.active {
+    opacity: 1;
+}
+
+.spinner-content {
+    text-align: center;
+    transform: translateZ(0);
+}
+
+.modern-spinner {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.spinner-ring {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    margin: 6px;
+    border: 6px solid var(--wc-dp-primary-color);
+    border-radius: 50%;
+    animation: modern-spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: var(--wc-dp-primary-color) transparent transparent transparent;
+}
+
+.spinner-ring:nth-child(1) { animation-delay: -0.45s; }
+.spinner-ring:nth-child(2) { animation-delay: -0.3s; }
+.spinner-ring:nth-child(3) { animation-delay: -0.15s; }
+
+@keyframes modern-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner-text {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--wc-dp-text-primary);
+    margin-bottom: 5px;
+}
+
+.spinner-subtext {
+    font-size: 0.85em;
+    color: var(--wc-dp-text-secondary);
+    font-weight: 500;
+}
+
+/* DISEÑO MODERNIZADO: Hover effects mejorados */
+
+
+.wc-dynamic-pricing-price-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* DISEÑO MODERNIZADO: Animaciones de precio */
+.wc-dynamic-pricing-price.price-update {
+    transform: scale(1.05) translateZ(0);
+    color: var(--wc-dp-secondary-color);
+}
+
+/* DISEÑO MODERNIZADO: Strikethrough mejorado */
+.wc-dynamic-pricing-original-strikethrough {
+    text-decoration: line-through !important;
+    opacity: 0.6 !important;
+    position: relative;
+}
+
+.wc-dynamic-pricing-original-strikethrough::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    border-radius: 1px;
+}
+
+/* DISEÑO MODERNIZADO: Responsive mejorado */
+@media (max-width: 767px) {
+    .wc-dynamic-pricing-container {
+        margin: 20px 0;
+    }
+    
+    .wc-dynamic-pricing-content {
+        padding: 20px;
+        border-radius: var(--wc-dp-small-radius);
+    }
+    
+    .wc-dynamic-pricing-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .wc-dynamic-pricing-title-section {
+        justify-content: center;
+    }
+    
+    .wc-dynamic-pricing-prices-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .wc-dynamic-pricing-label {
+        font-size: 1.1em;
+    }
+    
+    .wc-dynamic-pricing-subtitle {
+        font-size: 0.8em;
+    }
+    
+    .wc-dynamic-pricing-quantity-badge {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    
+    .wc-dynamic-pricing-savings-highlight {
+        padding: 12px 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .modern-spinner {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .spinner-ring {
+        width: 40px;
+        height: 40px;
+        border-width: 4px;
+    }
+}
+
+/* DISE
