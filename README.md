@@ -11,7 +11,8 @@ Un plugin moderno para WooCommerce que muestra dinámicamente los precios con de
 ](https://www.woland.es/plugin-woocommerce-de-precios-dinamicos-con-ajax-gratis-instalacion-profesional/)
 
 
-![WooCommerce Dynamic Pricing AJAX-video](https://github.com/user-attachments/assets/3e5c587b-bdda-40d2-bcc4-bf409360cfb0)
+![WooCommerce Dynamic Pricing AJAX-video2](https://github.com/user-attachments/assets/35048d89-62c6-47fe-b7ce-c8bc68b1839d)
+
 
 
 ## ✨ Características
