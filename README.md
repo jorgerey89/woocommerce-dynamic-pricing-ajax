@@ -250,7 +250,7 @@ Este plugin está licenciado bajo GPL v2 o posterior.
 
 - **Issues**: [GitHub Issues](https://github.com/jorgerey89/woocommerce-dynamic-pricing-ajax/issues)
 - **Documentación**: [Wiki del proyecto](https://github.com/jorgerey89/woocommerce-dynamic-pricing-ajax/wiki)
-- **Contacto**: [tu-email@ejemplo.com](mailto:tu-email@ejemplo.com)
+- **Contacto**: [soporte@woland.es](mailto:soporte@woland.es)
 
 ## 🌟 ¿Te gusta el plugin?
 
