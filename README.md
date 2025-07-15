@@ -7,7 +7,7 @@ Un plugin moderno para WooCommerce que muestra dinámicamente los precios con de
 ![WooCommerce](https://img.shields.io/badge/WooCommerce-5.0+-purple.svg)
 ![License](https://img.shields.io/badge/license-GPL--2.0+-red.svg)
 
-[🛠️ Servicio de instalación y configuración del plugin
+[🛠️ Descargar el plugin completo y configuración del plugin
 ](https://www.woland.es/plugin-woocommerce-de-precios-dinamicos-con-ajax-gratis-instalacion-profesional/)
 
 <img width="691" height="429" alt="screenshot-2" src="https://github.com/user-attachments/assets/ab75c53a-2555-49e0-a1f4-e81816e6ffe7" />
