@@ -31,21 +31,6 @@ Un plugin moderno para WooCommerce que muestra dinámicamente los precios con de
 - **WooCommerce Dynamic Pricing** (plugin requerido)
 - PHP 7.4 o superior
 
-## 🚀 Instalación
-
-### Desde GitHub
-
-1. Descarga el plugin desde este repositorio
-2. Sube la carpeta `woocommerce-dynamic-pricing-ajax` a `/wp-content/plugins/`
-3. Activa el plugin desde el panel de administración de WordPress
-4. Asegúrate de tener WooCommerce Dynamic Pricing instalado y activado
-
-### Instalación manual
-
-```bash
-cd wp-content/plugins/
-git clone https://github.com/jorgerey89/woocommerce-dynamic-pricing-ajax.git
-```
 
 ## 🎯 Uso
 
